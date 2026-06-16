@@ -14,25 +14,8 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
   size = 48,
 }) => {
   const containerSx = fullScreen
-    ? {
-        position: 'fixed' as const,
-        inset: 0,
-        display: 'flex',
-        flexDirection: 'column' as const,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: COLORS.surface,
-        zIndex: 9999,
-        gap: 2,
-      }
-    : {
-        display: 'flex',
-        flexDirection: 'column' as const,
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: 2,
-        py: 6,
-      };
+    ? { position: 'fixed' as const, inset: 0, display: 'flex', flexDirection: 'column' as const, alignItems: 'center', justifyContent: 'center', backgroundColor: COLORS.surface, zIndex: 9999, gap: 2,
+      } : { display: 'flex', flexDirection: 'column' as const, alignItems: 'center', justifyContent: 'center', gap: 2, py: 6};
 
   return (
     <Box sx={containerSx}>

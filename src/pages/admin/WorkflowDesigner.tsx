@@ -22,7 +22,6 @@ import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
 import Tooltip from '@mui/material/Tooltip';
 import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -167,14 +166,14 @@ const WorkflowDesigner: React.FC = () => {
     <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh', overflow: 'hidden' }}>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, px: 2, py: 1, borderBottom: '1.5px solid rgba(92,79,74,0.18)', bgcolor: '#FFFFFF', flexWrap: 'wrap', zIndex: 10, boxShadow: '0 1px 3px rgba(92,79,74,0.08)', flexShrink: 0 }}>
         <Button
-  variant="outlined"
-  size="small"
-  onClick={() => navigate('/admin')}
-  startIcon={<ArrowBackIcon />}
-  sx={{ fontWeight: 600, whiteSpace: 'nowrap', flexShrink: 0 }}
->
-  Workflows
-</Button>
+          variant="outlined"
+          size="small"
+          onClick={() => navigate('/admin')}
+          startIcon={<ArrowBackIcon />}
+          sx={{ fontWeight: 600, whiteSpace: 'nowrap', flexShrink: 0 }}
+        >
+          Workflows
+        </Button>
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flex: 1, minWidth: 0, justifyContent: 'center' }}>
           {!isMobile && (

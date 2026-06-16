@@ -45,7 +45,6 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
       {({ isSubmitting, values, setFieldValue, errors, touched }) => (
         <Form noValidate>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-            {/* Header */}
             <Box sx={{ borderBottom: 1, borderColor: 'divider', pb: 2 }}>
               <Typography variant="h5" sx={{ fontWeight: 700 }}>{schema.title}</Typography>
               <Typography variant="body2" color="text.secondary">
@@ -53,7 +52,6 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
               </Typography>
             </Box>
 
-            {/* Fields */}
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
               {schema.fields.map(field => {
                 const hasError = Boolean(touched[field.name] && errors[field.name]);

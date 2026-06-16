@@ -167,7 +167,7 @@ const SharePanel: React.FC<SharePanelProps> = ({ session, onClose }) => {
                     onClick={() => handleCopy(t.token)}
                     sx={{ whiteSpace: 'nowrap', minWidth: 80 }}
                   >
-                    {copied === t.token ? '✓ Copied' : 'Copy'}
+                    {copied === t.token ? 'Copied' : 'Copy'}
                   </Button>
                 </Paper>
               ))}

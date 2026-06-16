@@ -92,7 +92,6 @@ const SessionManager: React.FC = () => {
 
       {filtered.length === 0 ? (
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', py: 8, gap: 1 }}>
-          <Typography variant="h2" sx={{ lineHeight: 1 }}>📭</Typography>
           <Typography variant="h6" sx={{ fontWeight: 600 }}>No sessions found</Typography>
           <Typography variant="body2" color="text.secondary">Consumer sessions will appear here once they start onboarding.</Typography>
         </Box>

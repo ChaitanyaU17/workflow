@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import type { RootState } from '../../app/store';
 import { upsertSession } from '../../features/store/sessionsSlice';
 import { generateId, getStartNode, getStepNodes } from '../../utils/helpers';
-import WorkflowPreview from '../../components/consumer/WorkflowPreview';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -149,15 +148,6 @@ const OnboardingEntry: React.FC = () => {
             })}
           </Box>
         </Paper>
-
-        {!existingSession && (
-          <Box>
-            <Typography variant="caption" sx={{ fontWeight: 700, color: '#A89890', textTransform: 'uppercase', letterSpacing: 0.8, display: 'block', mb: 1 }}>Workflow Overview</Typography>
-            <Box sx={{ borderRadius: 3, overflow: 'hidden', border: '1.5px solid rgba(92,79,74,0.18)', height: 220, bgcolor: '#F7F4F1' }}>
-              <WorkflowPreview workflow={workflow} />
-            </Box>
-          </Box>
-        )}
 
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1.5, py: 1 }}>
           <Button
