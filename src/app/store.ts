@@ -9,6 +9,8 @@ import workflowsReducer from '../features/store/workflowsSlice';
 import formsReducer from '../features/store/formsSlice';
 import sessionsReducer from '../features/store/sessionsSlice';
 import shareReducer from '../features/store/shareSlice';
+import authReducer from '../features/store/authSlice';
+import adminsReducer from '../features/store/adminsSlice'
 import { seedWorkflows } from '../features/store/workflowsSlice';
 import { seedForms } from '../features/store/formsSlice';
 
@@ -32,6 +34,8 @@ const combinedReducer = combineReducers({
   forms: formsReducer,
   sessions: sessionsReducer,
   share: shareReducer,
+  auth: authReducer,
+  admins: adminsReducer,
 });
 
 export type RootState = ReturnType<typeof combinedReducer>;
@@ -40,19 +44,16 @@ const rootReducer = (state: RootState | undefined, action: Action): RootState =>
   const newState = combinedReducer(state, action);
 
   if (action.type === REHYDRATE) {
-    const rehydratedPayload = (action as any).payload as Partial<RootState> | undefined;
+    const payload = (action as any).payload as Partial<RootState> | undefined;
+    if (!payload) return newState;
 
-    if (!rehydratedPayload) {
-      return newState;
-    }
-
-    const persistedWorkflows = rehydratedPayload.workflows?.workflows ?? [];
+    const persistedWorkflows = payload.workflows?.workflows ?? [];
     const mergedWorkflows = [
       ...seedWorkflows,
       ...persistedWorkflows.filter(w => !seedWorkflows.some(s => s.id === w.id)),
     ];
 
-    const persistedForms = rehydratedPayload.forms?.forms ?? [];
+    const persistedForms = payload.forms?.forms ?? [];
     const mergedForms = [
       ...seedForms,
       ...persistedForms.filter(f => !seedForms.some(s => s.id === f.id)),
@@ -62,8 +63,10 @@ const rootReducer = (state: RootState | undefined, action: Action): RootState =>
       ...newState,
       workflows: { workflows: mergedWorkflows },
       forms: { forms: mergedForms },
-      sessions: rehydratedPayload.sessions ?? { sessions: [] },
-      share: rehydratedPayload.share ?? { tokens: [] },
+      sessions: payload.sessions ?? { sessions: [] },
+      share: payload.share ?? { tokens: [] },
+      auth: payload.auth ?? {currentUser: null, isAuthenticated: false, loginError: null},
+      admins: payload.admins ?? {admins: []},
     };
   }
 
@@ -71,8 +74,8 @@ const rootReducer = (state: RootState | undefined, action: Action): RootState =>
 };
 
 const persistConfig = {
-  key: 'onboarding-app-v3',   
-  version: 3,
+  key: 'onboarding-app-v4',   
+  version: 4,
   storage,
 };
 

@@ -1,13 +1,14 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { Workflow, WorkflowNode, WorkflowEdge, WorkflowsState } from '../../type/type';
 
-const NOW = '2026-01-01T00:00:00.000Z';
+const NOW = '2024-01-01T00:00:00.000Z';
 
 export const seedWorkflows: Workflow[] = [
   {
     id: 'wf-demo-001',
     name: 'Customer KYC Onboarding',
     status: 'published',
+    createdBy: 'superadmin',
     createdAt: NOW,
     updatedAt: NOW,
     nodes: [
@@ -45,17 +46,22 @@ const workflowsSlice = createSlice({
       }
     },
     deleteWorkflow(state, action: PayloadAction<string>) {
+      // seed workflows cannot be deleted
       if (seedWorkflows.some(s => s.id === action.payload)) return;
       state.workflows = state.workflows.filter(w => w.id !== action.payload);
     },
-    duplicateWorkflow(state, action: PayloadAction<string>) {
-      const orig = state.workflows.find(w => w.id === action.payload);
+    duplicateWorkflow(
+      state,
+      action: PayloadAction<{ workflowId: string; createdBy: string }>
+    ) {
+      const orig = state.workflows.find(w => w.id === action.payload.workflowId);
       if (orig) {
         state.workflows.push({
           ...orig,
           id: `wf-${Date.now()}`,
           name: `${orig.name} (Copy)`,
           status: 'draft',
+          createdBy: action.payload.createdBy,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
         });

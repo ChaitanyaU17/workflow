@@ -1,14 +1,8 @@
 import type { Node, Edge } from '@xyflow/react';
 
 export type FieldType =
-  | 'text'
-  | 'number'
-  | 'email'
-  | 'phone'
-  | 'date'
-  | 'select'
-  | 'checkbox'
-  | 'textarea';
+  | 'text' | 'number' | 'email' | 'phone'
+  | 'date' | 'select' | 'checkbox' | 'textarea' | 'file';
 
 export interface FieldValidation {
   required?: boolean;
@@ -18,7 +12,7 @@ export interface FieldValidation {
   maxLength?: number;
   pattern?: string;
   patternMessage?: string;
-  options?: string[]; //to select fields
+  options?: string[];
 }
 
 export interface FormField {
@@ -30,11 +24,11 @@ export interface FormField {
   validation: FieldValidation;
 }
 
-
 export interface FormSchema {
   id: string;
   title: string;
   fields: FormField[];
+  createdBy?: string;
 }
 
 export type NodeType = 'start' | 'step' | 'decision' | 'end';
@@ -48,13 +42,13 @@ export interface WorkflowNodeData extends Record<string, unknown> {
 
 export type WorkflowNode = Node<WorkflowNodeData>;
 export type WorkflowEdge = Edge;
-
 export type WorkflowStatus = 'draft' | 'published';
 
 export interface Workflow {
   id: string;
   name: string;
   status: WorkflowStatus;
+  createdBy: string;    // adminId or 'superadmin' — for strict isolation
   nodes: WorkflowNode[];
   edges: WorkflowEdge[];
   createdAt: string;
@@ -76,24 +70,13 @@ export interface ConsumerSession {
 export interface ShareToken {
   token: string;
   sessionId: string;
-  allowedFields: Record<string, string[]>; // nodeId - field names[]
+  allowedFields: Record<string, string[]>;
   expiresAt: string;
   createdAt: string;
   createdBy: string;
 }
 
-export interface WorkflowsState {
-  workflows: Workflow[];
-}
-
-export interface FormsState {
-  forms: FormSchema[];
-}
-
-export interface SessionsState {
-  sessions: ConsumerSession[];
-}
-
-export interface ShareState {
-  tokens: ShareToken[];
-}
+export interface WorkflowsState { workflows: Workflow[]; }
+export interface FormsState { forms: FormSchema[]; }
+export interface SessionsState { sessions: ConsumerSession[]; }
+export interface ShareState { tokens: ShareToken[]; }

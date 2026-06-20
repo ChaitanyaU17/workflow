@@ -18,10 +18,17 @@ import InputAdornment from '@mui/material/InputAdornment';
 const WorkflowList: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const workflows = useSelector((s: RootState) => s.workflows.workflows);
+
+  const currentUser = useSelector((s: RootState) => s.auth.currentUser);
+  const allWorkflows = useSelector((s: RootState) => s.workflows.workflows);
+
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+
+  const workflows = currentUser?.role === 'superadmin'
+  ? allWorkflows
+  : allWorkflows.filter(w => w.createdBy === currentUser?.adminId);
 
   const filtered = workflows.filter(w =>
     w.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -34,9 +41,10 @@ const WorkflowList: React.FC = () => {
       id,
       name: 'Untitled Workflow',
       status: 'draft',
+      createdBy: currentUser?.adminId ?? currentUser?.id ?? 'unknown',
       nodes: [
         { id: 'n-start', type: 'default', position: { x: 50, y: 150 }, data: { label: 'Start', nodeType: 'start' } },
-        { id: 'n-end', type: 'default', position: { x: 400, y: 150 }, data: { label: 'End', nodeType: 'end' } },
+        { id: 'n-end',   type: 'default', position: { x: 400, y: 150 }, data: { label: 'End',   nodeType: 'end'   } },
       ],
       edges: [{ id: 'e-start-end', source: 'n-start', target: 'n-end' }],
       createdAt: now,
@@ -44,6 +52,13 @@ const WorkflowList: React.FC = () => {
     };
     dispatch(addWorkflow(newWf));
     navigate(`/admin/designer/${id}`);
+  };
+
+  const handleDuplicate = (wf: Workflow) => {
+    dispatch(duplicateWorkflow({
+      workflowId: wf.id,
+      createdBy: currentUser?.adminId ?? currentUser?.id ?? 'unknown',
+    }));
   };
 
   const handleCopyLink = (wf: Workflow) => {
@@ -93,7 +108,6 @@ const WorkflowList: React.FC = () => {
 
       {filtered.length === 0 ? (
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', py: 10, gap: 1.5 }}>
-          <Typography variant="h2" sx={{ lineHeight: 1 }}>🗂</Typography>
           <Typography variant="h6" sx={{ fontWeight: 600 }}>No workflows found</Typography>
           <Typography variant="body2" color="text.secondary">
             {searchQuery ? 'Try a different search.' : 'Create your first workflow to get started.'}
@@ -148,7 +162,7 @@ const WorkflowList: React.FC = () => {
                     id={`dup-wf-${wf.id}`}
                     variant="outlined"
                     size="small"
-                    onClick={() => dispatch(duplicateWorkflow(wf.id))}
+                    onClick={() => handleDuplicate(wf)}
                     sx={{ fontWeight: 600 }}
                   >
                     ⧉ Duplicate
