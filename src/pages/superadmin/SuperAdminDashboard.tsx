@@ -45,10 +45,6 @@ const SuperAdminDashboard: React.FC = () => {
     }
   };
 
-  const totalWorkflows = workflows.length;
-  const publishedWorkflows = workflows.filter(w => w.status === 'published').length;
-  const activeAdmins = admins.filter(a => a.isActive).length;
-
   return (
     <Box sx={{ minHeight: '100vh', bgcolor: '#F7F4F1' }}>
       <Box sx={{ height: 60, display: 'flex', alignItems: 'center', justifyContent: 'space-between', px: { xs: 2, sm: 3.5 }, bgcolor: '#FFFFFF', borderBottom: '1.5px solid rgba(92,79,74,0.18)', position: 'sticky', top: 0, zIndex: 100, boxShadow: '0 1px 4px rgba(92,79,74,0.08)' }}>
