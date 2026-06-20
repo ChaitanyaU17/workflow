@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Disallow admin and authentication routes from indexing
+Disallow: /admin/
+Disallow: /admin/login
+Disallow: /superadmin/
+Disallow: /superadmin/login
+Disallow: /onboarding/
+Disallow: /share/
+
+Sitemap: https://workflow-x274.onrender.com/sitemap.xml
