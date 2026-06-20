@@ -3,12 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
+"scripts": {
+  "dev": "vite",
+  "build": "tsc -b && vite build",
+  "lint": "eslint .",
+  "preview": "vite preview",
+  "start": "serve -s dist -l $PORT"
+},
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
@@ -22,6 +23,7 @@
     "react-redux": "^9.3.0",
     "react-router-dom": "^7.17.0",
     "redux-persist": "^6.0.0",
+    "serve": "^14.2.6",
     "yup": "^1.7.1"
   },
   "devDependencies": {
