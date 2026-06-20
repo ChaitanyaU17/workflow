@@ -27,13 +27,6 @@ const FOOTER_COLS = [
       { label: 'Terms & Conditions', to: '/terms-and-conditions' },
     ],
   },
-  {
-    heading: 'Access',
-    links: [
-      { label: 'Admin Login', to: '/admin/login' },
-      { label: 'Super Admin', to: '/superadmin/login' },
-    ],
-  },
 ];
 
 const PublicFooter: React.FC = () => (
