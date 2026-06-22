@@ -95,7 +95,6 @@ const DOC_TABS = [
   { label: 'Assign Forms', icon: <AssignmentOutlinedIcon sx={{ fontSize: '1rem' }} /> },
   { label: 'Managing Users', icon: <GroupOutlinedIcon sx={{ fontSize: '1rem' }} /> },
   { label: 'Admin Features', icon: <TuneIcon sx={{ fontSize: '1rem' }} /> },
-  { label: 'Super Admin', icon: <AdminPanelSettingsOutlinedIcon sx={{ fontSize: '1rem' }} /> },
   { label: 'Sharing', icon: <ShareOutlinedIcon sx={{ fontSize: '1rem' }} /> },
   { label: 'Best Practices', icon: <TipsAndUpdatesOutlinedIcon sx={{ fontSize: '1rem' }} /> },
 ];
@@ -208,7 +207,7 @@ const DocumentationPage: React.FC = () => {
                 <StepCard
                   step={1}
                   title="Navigate to Admin Login"
-                  desc="Visit /admin/login on your Workflow X platform URL. Enter your username and password provided by your Super Admin."
+                  desc="Visit /admin/login on your Workflow X platform URL. Enter your username and password."
                 />
                 <StepCard
                   step={2}
@@ -467,17 +466,12 @@ const DocumentationPage: React.FC = () => {
                   Managing Users
                 </Typography>
                 <Para>
-                  Workflow X has a three-tier user model: Super Admins, Admins, and Consumers.
+                  Workflow X has a three-tier user model: Admins, and Consumers.
                   Understanding how each role works is essential to setting up and maintaining a
                   well-structured onboarding operation.
                 </Para>
                 <SectionTitle>User Roles Overview</SectionTitle>
                 {[
-                  {
-                    role: 'Super Admin',
-                    icon: <AdminPanelSettingsOutlinedIcon sx={{ fontSize: '1.3rem', color: '#5C4F4A' }} />,
-                    desc: 'The highest-privilege user. Super Admins manage the entire platform, create and deactivate Admin accounts, view all workflows and sessions, and generate share tokens.',
-                  },
                   {
                     role: 'Admin',
                     icon: <TuneIcon sx={{ fontSize: '1.3rem', color: '#5C4F4A' }} />,
@@ -507,13 +501,11 @@ const DocumentationPage: React.FC = () => {
                 ))}
                 <SectionTitle>Creating Admin Accounts</SectionTitle>
                 <Para>
-                  Only Super Admins can create Admin accounts. Navigate to the Super Admin
-                  Dashboard and use the Admin Management section to create a new admin.
+                  Only Super Admins can create Admin accounts.
                 </Para>
                 <SectionTitle>Deactivating Admin Accounts</SectionTitle>
                 <Para>
-                  To deactivate an admin account, navigate to Admin Management in the Super Admin
-                  Dashboard and toggle the admin's active status to "Inactive". Deactivated admins
+                  To deactivate an admin account contact Super Admin, Deactivated admins
                   cannot log in. Their existing workflows and consumer sessions remain intact.
                 </Para>
               </TabPanel>
@@ -587,34 +579,7 @@ const DocumentationPage: React.FC = () => {
               </TabPanel>
 
               <TabPanel value={tab} index={6}>
-                <Typography
-                  variant="h2"
-                  sx={{
-                    fontFamily: '"Playfair Display", Georgia, serif',
-                    fontSize: { xs: '1.6rem', sm: '2rem' },
-                    color: '#2E2522',
-                    mb: 1.5,
-                  }}
-                >
-                  Super Admin Features
-                </Typography>
-                <Para>
-                  Super Admin is the highest-privilege role in Workflow X. The Super Admin
-                  Dashboard provides full platform visibility and control, including admin account
-                  management, global workflow oversight, and consumer data sharing tools.
-                </Para>
-                <SectionTitle>Accessing the Super Admin Dashboard</SectionTitle>
-                <Para>
-                  Navigate to /superadmin/login and enter your Super Admin credentials. Upon login,
-                  you will access the Super Admin Dashboard which shows the global platform
-                  overview.
-                </Para>
                 <SectionTitle>Admin Account Management</SectionTitle>
-                <StepCard
-                  step={1}
-                  title="Navigate to Admin Management"
-                  desc="In the Super Admin Dashboard, select the 'Admin Management' or 'Admins' section from the navigation."
-                />
                 <StepCard
                   step={2}
                   title="Create a New Admin"

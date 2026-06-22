@@ -92,7 +92,7 @@ const BLOG_POSTS: BlogPost[] = [
     content: [
       'Role-based access control (RBAC) is a security paradigm that restricts system access based on the roles assigned to individual users within an organisation. Rather than granting permissions to individual users directly, RBAC assigns permissions to roles, and users are assigned to roles.',
       'The principle behind RBAC is the concept of least privilege: every user should have access only to the minimum set of resources and capabilities necessary to perform their job function.',
-      'Workflow X implements RBAC with three distinct roles. The Super Admin role has the highest privilege level. The Admin role is scoped to the admin\'s own resources. The Consumer role is the most restricted.',
+      'Workflow X implements RBAC with three distinct roles. The Admin role is scoped to the admin\'s own resources. The Consumer role is the most restricted.',
       'RBAC provides several important benefits. It simplifies user management. It reduces the blast radius of security incidents. It creates a clear audit trail of who can access what and why.',
       'When implementing RBAC in your organisation, document your role definitions clearly. Review role assignments regularly. Enforce the principle of least privilege rigorously.',
     ],

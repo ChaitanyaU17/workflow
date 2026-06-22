@@ -45,9 +45,7 @@ Admins log in to their dashboard and use the visual Workflow Designer to build a
 
 For each step node, admins use the Form Builder to configure the data fields consumers will fill in. Fields support multiple types — text, email, number, boolean, and select — with full Yup validation: required fields, minimum and maximum character lengths, email format checks, and more.
 
-Once the workflow is published, admins receive a unique onboarding URL that they can share with consumers. Consumers visit the link, see the list of steps ahead of them, and begin their journey. Progress is automatically saved at every step, so if a consumer closes the browser and returns later, they can resume exactly where they left off.
-
-Super Admins have a bird's eye view of the entire platform — they can create and manage admin accounts, view all workflows and sessions, and generate secure share tokens that expose only approved consumer data fields to third parties.`,
+Once the workflow is published, admins receive a unique onboarding URL that they can share with consumers. Consumers visit the link, see the list of steps ahead of them, and begin their journey. Progress is automatically saved at every step, so if a consumer closes the browser and returns later, they can resume exactly where they left off.`,
   },
   {
     icon: <BoltIcon sx={{ fontSize: '1.6rem', color: '#5C4F4A' }} />,
@@ -60,7 +58,7 @@ Second, automation creates consistency. Every consumer goes through exactly the 
 
 Third, automation accelerates time-to-value. Consumers complete onboarding faster when guided through a clear, step-by-step process rather than facing an overwhelming single-page form. Faster completion means faster activation, faster revenue, and better consumer satisfaction scores.
 
-Finally, automation provides visibility. Admins and Super Admins can see at a glance which consumers are in progress, which have completed, and which may need follow-up — without digging through email threads or spreadsheets.`,
+Finally, automation provides visibility.`,
   },
 ];
 

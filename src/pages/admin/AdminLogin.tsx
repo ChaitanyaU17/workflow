@@ -89,7 +89,7 @@ const AdminLogin: React.FC = () => {
           if (inactiveAdmin && !inactiveAdmin.isActive) {
             dispatch(
               loginFailure(
-                'Your account has been deactivated. Contact the super admin.'
+                'Your account has been deactivated.'
               )
             );
           } else {
@@ -133,7 +133,7 @@ const AdminLogin: React.FC = () => {
 
           {admins.length === 0 && (
             <Alert severity="warning" sx={{ borderRadius: 2 }}>
-              No admin accounts exist yet. Ask the super admin to create one.
+              No admin accounts exist yet.
             </Alert>
           )}
 

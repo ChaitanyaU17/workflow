@@ -57,19 +57,14 @@ const FEATURES = [
   },
   {
     icon: <AdminPanelSettingsOutlinedIcon sx={{ fontSize: '1.5rem', color: '#5C4F4A' }} />,
-    title: 'Admin & Super Admin Controls',
-    desc: 'Super Admins manage the full platform and admin roster. Admins control their own workflows and sessions independently.',
+    title: 'Admin',
+    desc: 'Admins control their own workflows and sessions independently.',
   },
   {
     icon: <VerifiedOutlinedIcon sx={{ fontSize: '1.5rem', color: '#5C4F4A' }} />,
     title: 'Form Validation',
     desc: 'Every form field supports built-in validation: required, min/max length, email format, number ranges — powered by Yup schemas.',
-  },
-  {
-    icon: <ShareOutlinedIcon sx={{ fontSize: '1.5rem', color: '#5C4F4A' }} />,
-    title: 'Workflow Sharing',
-    desc: 'Generate shareable onboarding links for consumers. Super Admins can view select consumer data via expiring share tokens.',
-  },
+  }
 ];
 
 const BENEFITS = [
