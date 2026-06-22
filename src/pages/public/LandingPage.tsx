@@ -20,7 +20,6 @@ import PersonAddOutlinedIcon from '@mui/icons-material/PersonAddOutlined';
 import WorkspacesOutlinedIcon from '@mui/icons-material/WorkspacesOutlined';
 import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
 import VerifiedOutlinedIcon from '@mui/icons-material/VerifiedOutlined';
-import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import TimerOutlinedIcon from '@mui/icons-material/TimerOutlined';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
