@@ -11,6 +11,7 @@ import sessionsReducer from '../features/store/sessionsSlice';
 import shareReducer from '../features/store/shareSlice';
 import authReducer from '../features/store/authSlice';
 import adminsReducer from '../features/store/adminsSlice'
+import blogsReducer from '../features/store/blogSlice';
 import { seedWorkflows } from '../features/store/workflowsSlice';
 import { seedForms } from '../features/store/formsSlice';
 
@@ -36,6 +37,7 @@ const combinedReducer = combineReducers({
   share: shareReducer,
   auth: authReducer,
   admins: adminsReducer,
+  blogs: blogsReducer,
 });
 
 export type RootState = ReturnType<typeof combinedReducer>;
@@ -67,6 +69,7 @@ const rootReducer = (state: RootState | undefined, action: Action): RootState =>
       share: payload.share ?? { tokens: [] },
       auth: payload.auth ?? {currentUser: null, isAuthenticated: false, loginError: null},
       admins: payload.admins ?? {admins: []},
+      blogs: payload.blogs ?? {blogs: []},
     };
   }
 
@@ -74,8 +77,8 @@ const rootReducer = (state: RootState | undefined, action: Action): RootState =>
 };
 
 const persistConfig = {
-  key: 'onboarding-app-v4',   
-  version: 4,
+  key: 'onboarding-app-v6',
+  version: 6,
   storage,
 };
 

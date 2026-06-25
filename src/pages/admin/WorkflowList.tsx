@@ -112,9 +112,6 @@ const WorkflowList: React.FC = () => {
           <Typography variant="body2" color="text.secondary">
             {searchQuery ? 'Try a different search.' : 'Create your first workflow to get started.'}
           </Typography>
-          {!searchQuery && (
-            <Button variant="contained" onClick={handleCreate} sx={{ mt: 1, fontWeight: 600 }}>Create Workflow</Button>
-          )}
         </Box>
       ) : (
         <Grid container spacing={2}>

@@ -167,7 +167,7 @@ const NodeConfigPanel: React.FC<NodeConfigPanelProps> = ({ workflowId, nodeId, n
                   slotProps={{select: {native: true}}}
                   helperText="Assign a form for consumers to fill"
                 >
-                  <option value="">— None selected —</option>
+                  <option value="">None selected</option>
                   {forms.map(f => (
                     <option key={f.id} value={f.id}>{f.title} ({f.fields.length} fields)</option>
                   ))}
